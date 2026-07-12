@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protein Calculator — Daily Intake by Weight, Age &amp; Goal</title>
+<meta name="description" content="Free protein calculator using ISSN and ACSM research. Enter your weight, activity level, and goal to get a personalized daily protein target in grams.">
+<link rel="canonical" href="https://www.proteincalc-example.com/protein-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Protein Calculator — Daily Intake by Weight, Age & Goal">
+<meta property="og:description" content="Enter your stats to get a personalized daily protein target, backed by sports nutrition research.">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.proteincalc-example.com/"},
+    {"@type":"ListItem","position":2,"name":"Protein Calculator","item":"https://www.proteincalc-example.com/protein-calculator.html"}
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#175E8C" stroke-width="2"/><circle cx="14" cy="16" r="3.4" fill="#1FA97E"/><circle cx="26" cy="16" r="3.4" fill="#175E8C"/><circle cx="20" cy="26" r="3.4" fill="#1FA97E"/><path d="M14 16L20 26M26 16L20 26" stroke="#175E8C" stroke-width="1.6"/></svg>
+      ProteinCalc
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="protein-calculator.html" class="active">Protein Calculator</a>
+      <a href="calculators.html">All Calculators</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero container">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Protein Calculator</div>
+  <div class="eyebrow">Full Calculator</div>
+  <h1 style="font-size:clamp(28px,4vw,44px);max-width:640px;">Your personalized daily protein target</h1>
+  <p class="section-lead">Built on ISSN position stand ranges and ACSM sports nutrition guidance — not a flat one-size number.</p>
+</section>
+
+<section class="section-tight">
+  <div class="container" style="display:grid;grid-template-columns:1fr;max-width:640px;margin:0 auto;">
+    <div class="glass calc-card">
+      <div class="calc-tabs">
+        <div class="seg" style="flex:1">
+          <button type="button" class="unit-btn active" data-unit="metric">Metric (kg/cm)</button>
+          <button type="button" class="unit-btn" data-unit="imperial">Imperial (lb/ft)</button>
+        </div>
+      </div>
+      <form id="proteinForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label>Gender</label>
+            <div class="pill-group" id="genderGroup">
+              <button type="button" class="pill active" data-value="male">Male</button>
+              <button type="button" class="pill" data-value="female">Female</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" min="14" max="90" value="28" required>
+          </div>
+        </div>
+        <div class="field-row" id="metricRow">
+          <div class="field"><label for="heightCm">Height (cm)</label><input type="number" id="heightCm" min="120" max="230" value="175"></div>
+          <div class="field"><label for="weightKg">Weight (kg)</label><input type="number" id="weightKg" min="30" max="250" value="75"></div>
+        </div>
+        <div class="field-row" id="imperialRow" style="display:none;">
+          <div class="field"><label for="heightFt">Height (ft)</label><input type="number" id="heightFt" min="3" max="7" value="5"></div>
+          <div class="field"><label for="heightIn">Height (in)</label><input type="number" id="heightIn" min="0" max="11" value="9"></div>
+        </div>
+        <div class="field-row single" id="imperialWeightRow" style="display:none;">
+          <div class="field"><label for="weightLb">Weight (lb)</label><input type="number" id="weightLb" min="60" max="550" value="165"></div>
+        </div>
+        <div class="field-row single">
+          <div class="field">
+            <label for="activity">Activity level</label>
+            <select id="activity">
+              <option value="sedentary">Sedentary</option>
+              <option value="light">Light (1-3x/week)</option>
+              <option value="moderate" selected>Moderate (3-5x/week)</option>
+              <option value="active">Active (6-7x/week)</option>
+              <option value="athlete">Athlete (2x/day)</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row single">
+          <div class="field">
+            <label>Fitness goal</label>
+            <div class="pill-group" id="goalGroup">
+              <button type="button" class="pill" data-value="weight_loss">Weight Loss</button>
+              <button type="button" class="pill active" data-value="maintenance">Maintenance</button>
+              <button type="button" class="pill" data-value="muscle_gain">Muscle Gain</button>
+              <button type="button" class="pill" data-value="recomposition">Recomposition</button>
+            </div>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="meals">Meals per day</label><input type="number" id="meals" min="2" max="8" value="4"></div>
+          <div class="field" style="display:flex;align-items:flex-end;"><button type="submit" class="btn btn-primary btn-block">Calculate</button></div>
+        </div>
+      </form>
+      <div class="calc-result" id="proteinResult">
+        <div class="result-main">
+          <div class="protein-ring" id="proteinRing"></div>
+          <div class="result-detail">
+            <div class="headline">Your daily protein target</div>
+            <b style="font-family:var(--font-data);font-size:26px;" id="gramsMidOut">0 g</b>
+            <div style="font-size:13px;color:var(--ink-soft);margin-top:2px;" id="gramsRangeOut">range</div>
+          </div>
+        </div>
+        <div class="result-grid">
+          <div class="result-chip"><b id="perKgOut">0</b><span>g per kg bodyweight</span></div>
+          <div class="result-chip"><b id="perMealOut">0 g</b><span>per meal</span></div>
+        </div>
+        <p class="disclaimer-note">This is general wellness guidance, not medical advice. Consult a registered dietitian for individual conditions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section prose" style="max-width:760px;margin:0 auto;">
+  <div class="container" style="max-width:760px;">
+    <h2>How this calculator works</h2>
+    <p>The tool estimates a gram-per-kilogram range from your activity level and goal, based on ranges commonly cited in ISSN position stands and ACSM sports nutrition guidance, then multiplies that by your body weight to get a daily gram target. It also divides that target across your stated number of meals.</p>
+    <h3>Why goal changes the number</h3>
+    <p>Someone maintaining weight needs meaningfully less protein than someone in a calorie deficit trying to preserve muscle, or someone in a surplus actively building it. That's why this calculator asks for your goal instead of giving one flat number for everyone.</p>
+    <h3>Limitations</h3>
+    <p>This estimate doesn't account for pregnancy, certain medical conditions, or extreme body compositions. If you have kidney disease, liver disease, or another condition affecting protein metabolism, talk to your doctor before changing your intake.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 ProteinCalc. All rights reserved.</span>
+      <span><a href="privacy-policy.html">Privacy</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/calculators.js"></script>
+<script>
+(function(){
+  let unit='metric', gender='male', goal='maintenance';
+  document.querySelectorAll('.unit-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.unit-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); unit=btn.dataset.unit;
+      document.getElementById('metricRow').style.display = unit==='metric'?'grid':'none';
+      document.getElementById('imperialRow').style.display = unit==='imperial'?'grid':'none';
+      document.getElementById('imperialWeightRow').style.display = unit==='imperial'?'grid':'none';
+    });
+  });
+  document.querySelectorAll('#genderGroup .pill').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ document.querySelectorAll('#genderGroup .pill').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); gender=btn.dataset.value; });
+  });
+  document.querySelectorAll('#goalGroup .pill').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ document.querySelectorAll('#goalGroup .pill').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); goal=btn.dataset.value; });
+  });
+  document.getElementById('proteinForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const age=Number(document.getElementById('age').value)||28;
+    const activity=document.getElementById('activity').value;
+    const meals=Number(document.getElementById('meals').value)||4;
+    let weightKg, heightCm;
+    if(unit==='metric'){ weightKg=Number(document.getElementById('weightKg').value)||75; heightCm=Number(document.getElementById('heightCm').value)||175; }
+    else { weightKg=CONV.lbToKg(Number(document.getElementById('weightLb').value)||165); heightCm=CONV.ftInToCm(Number(document.getElementById('heightFt').value)||5, Number(document.getElementById('heightIn').value)||9); }
+    const res=calcProtein({weightKg, goal, activity, mealsPerDay:meals});
+    document.getElementById('gramsMidOut').textContent=res.gramsMid+' g/day';
+    document.getElementById('gramsRangeOut').textContent=res.gramsLow+'–'+res.gramsHigh+' g range';
+    document.getElementById('perKgOut').textContent=res.perKg;
+    document.getElementById('perMealOut').textContent=res.perMeal+' g';
+    const ringEl=document.getElementById('proteinRing');
+    renderRing(ringEl, res.gramsMid, Math.max(res.gramsHigh, res.gramsMid*1.15), 'var(--green-500)');
+    ringEl.insertAdjacentHTML('beforeend', `<div class="ring-label"><b>${res.gramsMid}</b><span>g/day</span></div>`);
+    document.getElementById('proteinResult').classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
